@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context=".EditNote">
+
+    <ScrollView android:layout_marginTop="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/updatetittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="parent" >
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/updatenote"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:hint="Note"
+                android:gravity="top"
+                app:layout_constraintTop_toBottomOf="@+id/updatetittle"/>
+
+            <Button
+                android:id="@+id/button_insertnote2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B0F7F7"
+                android:text="@string/button_updatenote"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/updatenote"
+                tools:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/button_mainMenu_fromGramadd2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B0F7F7"
+                android:text="@string/button_goback"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/button_insertnote"
+                tools:layout_width="match_parent" />
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

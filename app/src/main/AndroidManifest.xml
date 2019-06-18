@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jft.brushup">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".GameChoose" />
+        <activity android:name=".GameOptions" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".GameCheck" />
+        <activity android:name=".ShowStats" />
+        <activity android:name=".ResetDatabase" />
+        <activity android:name=".InsertWord" />
+        <activity
+            android:name=".ShowDict"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ShowWord" />
+        <activity android:name=".ShowCredits" />
+        <activity android:name=".GrammarSection" />
+        <activity android:name=".GrammarList" />
+        <activity android:name=".GrammarAdd" />
+        <activity android:name=".ShowNote" />
+        <activity android:name=".EditWord" />
+        <activity android:name=".EditNote" />
+        <activity android:name=".SeeAllWords" />
+        <activity android:name=".SeeAllWordsByLevel"></activity>
+    </application>
+
+</manifest>

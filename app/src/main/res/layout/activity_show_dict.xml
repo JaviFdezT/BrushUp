@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jft.brushup.ShowDict">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!-- Editext for Search -->
+    <EditText android:id="@+id/inputSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search word.."
+        android:layout_weight="0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textVisiblePassword"/>
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listview"
+        android:layout_height="0dip"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/inputSearch" />
+
+        <Button
+            android:id="@+id/button_seeAllWords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B0F7F7"
+            android:text="See All"
+            android:layout_weight="0"
+            app:layout_constraintTop_toBottomOf="@+id/listview"
+            tools:layout_width="match_parent" />
+
+        <Button
+            android:id="@+id/button_mainMenu_fromDict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B0F7F7"
+            android:text="@string/button_goback"
+            android:layout_marginTop="4dp"
+            android:layout_weight="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_seeAllWords"
+            tools:layout_width="match_parent" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
