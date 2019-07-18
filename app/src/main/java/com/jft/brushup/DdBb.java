@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -36,6 +37,7 @@ public class DdBb extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_WORDS_TABLE);
             db.execSQL(CREATE_NOTES_TABLE);
+            this.insertPhonemes();
         } catch (Exception e) {}
     }
     @Override
@@ -340,6 +342,140 @@ public class DdBb extends SQLiteOpenHelper {
         cursor.close();
         this.close();
         return stats;
+    }
+
+    public boolean insertPhonemes() {
+        Boolean bool=true;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String CREATE_PHONEMES_TABLE = "CREATE TABLE IF NOT EXISTS PHONEMES (ind int PRIMARY KEY, phoneme varchar(255) NOT NULL, note varchar(255) NOT NULL, uses varchar(255), example varchar(255),CONSTRAINT norepeat UNIQUE (phoneme)  ON CONFLICT IGNORE) ";
+        String UPDATE_TABLE_1 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|æ|','The mouth has to have a similar degree of opening as for the Spanish |a|, but the position of the tongue is similar to Spanish |e|.','-a-','bad, can, fan')";
+        String UPDATE_TABLE_2 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ʌ|','Similar to Spanish |a| but shorter.','-u-; -o-; -oo-','fun, cut, come, none, blood')";
+        String UPDATE_TABLE_3 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɑː|','As if yawning, open mouth, long sound.','-ar-; -au-; -al-; -ah-','farm, laugh, psalm, shah')";
+        String UPDATE_TABLE_4 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|e|,|ɛ|','Galician sound in the word «terra». More open than the Spanish |e|.','-ea-; -ai-','dead, said')";
+        String UPDATE_TABLE_5 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɜː|','Similar to the sound Spanish speakers produce when they think aloud «Ehhhh!».','-ir-; -ur-; -er-; -ear-','sir, fur, verdant, pearl')";
+        String UPDATE_TABLE_6 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɪ|','Quality closer to Spanish |e| than to Spanish |i|.','-age; -y-; -e-; -u-','this, luggage, hymn, reflect, reliable, business, busy, lettuce')";
+        String UPDATE_TABLE_7 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|iː|','Similar to Spanish |i| but longer.','-eo-; -ee-; -ea-; -ie-; -i-; -ey-; -e-','these, beach, people, meet, read, piece, machine, key, theme')";
+        String UPDATE_TABLE_8 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɒ|','Galician sound in the word «ola». More open than the Spanish |o|.','-o-; -a-; -ou-','lot, shop, wash, cough')";
+        String UPDATE_TABLE_9 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɔː|','Similar to Spanish |o| but longer.','-or-; -a-; -ou-; -au-; -aw-; -oa-; -al-','north, all, thought, fraud, prawn, broad, talk')";
+        String UPDATE_TABLE_10 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ʊ|','Quality between Spanish |u| and |e|','-o-; -oo-; -u-; -ou-','to, woman, wolf, cook, put, could')";
+        String UPDATE_TABLE_11 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|uː|','Similar to Spanish |u| but longer.','-oo-; -ue-; -wo-; -ew-; -u-; -ui-; -o-; -ou-','goose, choose, boot, moon, clue, two, screw, flute, fruit, do, who, soup, you')";
+        String UPDATE_TABLE_12 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ə|','Short |ɜː|','an unstressed syllable. Weak vowel.','comfortable')";
+        String UPDATE_TABLE_13 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|i|','Similar to Spanish |i|. Weak vowel.','-y-;-i-;-ie-;-e-','lorry, happy, media, happier, married, apostrophe')";
+        String UPDATE_TABLE_14 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|u|','Similar to Spanish |u|. Weak vowel.','-u-','circulate, curator, ingenuity')";
+        String UPDATE_TABLE_15 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|aɪ|','Spanish |a| + |ɪ|','-i-; -ie-; -y-; -igh-; -uy-','mine, tie, cry, light, buy')";
+        String UPDATE_TABLE_16 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|eɪ|','Spanish |e| + |ɪ|','-a-; -ay-; -ai','bake, pay, pain')";
+        String UPDATE_TABLE_17 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɔɪ|','Spanish |o| + |ɪ|','-oi-; -oy-','soil, boy')";
+        String UPDATE_TABLE_18 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|aʊ|','Spanish |a| + |ʊ|','-ou-; -ow-','out, now')";
+        String UPDATE_TABLE_19 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|əʊ|','|ə| + |ʊ|','-oa-; -ow-; -o-','boat, oat, coach, road, low, know, bone, ocean, soldier')";
+        String UPDATE_TABLE_20 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɪə|','|ɪ| + |ə|','-ear-; -ier-; -ea-; -eer-; -ere-','dear, pier, idea, deer, here')";
+        String UPDATE_TABLE_21 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|eə|','Spanish |e| + |ə|','-are-; -eir-; -air-; -ere-','mare, their, pair, there')";
+        String UPDATE_TABLE_22 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ʊə|','|ʊ| + |ə|','-oor-; -our-; -ure-','poor, tourist, pure')";
+        String UPDATE_TABLE_23 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|aɪə|','|aɪ| + |ə|','-ire; -ier; -oir-; -yre-; -iro-','fire, drier, choir, tyre, iron')";
+        String UPDATE_TABLE_24 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|eɪə|','|eɪ| + |ə|','-ayer-; -eyor-; -eyer-','layer, conveyor, greyer')";
+        String UPDATE_TABLE_25 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|ɔɪə|','|ɔɪ| + |ə|','-oya-; -oyou-; -oyer-','royal, joyous, Moyer')";
+        String UPDATE_TABLE_26 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|aʊə|','|aʊ| + |ə|','-ower-; -owar-; -our-','power, coward, sour')";
+        String UPDATE_TABLE_27 = "INSERT INTO PHONEMES (phoneme, note, uses, example) VALUES ('|əʊə|','|əʊ| + |ə|','-ower-','lower')";
+        try {
+            db.execSQL("DROP TABLE IF EXISTS PHONEMES");
+            db.execSQL(CREATE_PHONEMES_TABLE);
+            db.execSQL(UPDATE_TABLE_1);
+            db.execSQL(UPDATE_TABLE_2);
+            db.execSQL(UPDATE_TABLE_3);
+            db.execSQL(UPDATE_TABLE_4);
+            db.execSQL(UPDATE_TABLE_5);
+            db.execSQL(UPDATE_TABLE_6);
+            db.execSQL(UPDATE_TABLE_7);
+            db.execSQL(UPDATE_TABLE_8);
+            db.execSQL(UPDATE_TABLE_9);
+            db.execSQL(UPDATE_TABLE_10);
+            db.execSQL(UPDATE_TABLE_11);
+            db.execSQL(UPDATE_TABLE_12);
+            db.execSQL(UPDATE_TABLE_13);
+            db.execSQL(UPDATE_TABLE_14);
+            db.execSQL(UPDATE_TABLE_15);
+            db.execSQL(UPDATE_TABLE_16);
+            db.execSQL(UPDATE_TABLE_17);
+            db.execSQL(UPDATE_TABLE_18);
+            db.execSQL(UPDATE_TABLE_19);
+            db.execSQL(UPDATE_TABLE_20);
+            db.execSQL(UPDATE_TABLE_21);
+            db.execSQL(UPDATE_TABLE_22);
+            db.execSQL(UPDATE_TABLE_23);
+            db.execSQL(UPDATE_TABLE_24);
+            db.execSQL(UPDATE_TABLE_25);
+            db.execSQL(UPDATE_TABLE_26);
+            db.execSQL(UPDATE_TABLE_27);
+        } catch (NullPointerException e){
+            bool=false;
+        }
+        this.close();
+        return bool;
+    }
+
+    public List<Phoneme> getPhonemes() {
+        List<Phoneme> phonemes = new LinkedList<Phoneme>();
+        Cursor cursor=null;
+        String query = "SELECT  * FROM PHONEMES ORDER BY ind";
+        SQLiteDatabase db = null;
+        try {
+            db=this.getWritableDatabase();
+            cursor = db.rawQuery(query, null);
+        } catch (SQLiteException e1) {
+            this.insertPhonemes();
+            try {
+                cursor = db.rawQuery(query, null);
+            } catch (Exception e2) {}
+        }
+        try {
+            //if (cursor.getCount()==0){
+            //    this.insertPhonemes();
+            //}
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Phoneme phoneme = new Phoneme();
+                    phoneme.setPhoneme(cursor.getString(1));
+                    phoneme.setNote(cursor.getString(2));
+                    phoneme.setUses(cursor.getString(3));
+                    phoneme.setExample(cursor.getString(4));
+                    phonemes.add(phoneme);
+
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            this.close();
+        } catch (Exception e3) {}
+        return phonemes;
+    }
+
+
+    public Phoneme getPhoneme(String showPhoneme) {
+        List<Phoneme> phonemes = new LinkedList<Phoneme>();
+        Phoneme finalPhoneme =  new Phoneme();
+        Cursor cursor=null;
+        String query = "SELECT  * FROM PHONEMES WHERE phoneme='"+showPhoneme+"'";
+        SQLiteDatabase db = null;
+        try {
+            db=this.getWritableDatabase();
+            cursor = db.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    Phoneme phoneme = new Phoneme();
+                    phoneme.setPhoneme(cursor.getString(1));
+                    phoneme.setNote(cursor.getString(2));
+                    phoneme.setUses(cursor.getString(3));
+                    phoneme.setExample(cursor.getString(4));
+                    phonemes.add(phoneme);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            System.out.println(showPhoneme);
+            System.out.println(query);
+            System.out.println(cursor.getCount());
+            finalPhoneme=phonemes.get(0);
+            this.close();
+        } catch (NullPointerException e3) {}
+        return finalPhoneme;
     }
 
 }

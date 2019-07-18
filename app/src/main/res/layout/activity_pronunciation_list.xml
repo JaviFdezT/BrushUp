@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jft.brushup.PronunciationList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/listviewpron"
+            android:layout_height="0dip"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <Button
+            android:id="@+id/button_mainMenu_fromPronList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B0F7F7"
+            android:text="@string/button_goback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_weight="0"
+            tools:layout_width="match_parent" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

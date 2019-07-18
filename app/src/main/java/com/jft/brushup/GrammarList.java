@@ -40,7 +40,7 @@ public class GrammarList extends AppCompatActivity {
 
         if (notes.size()==0) {
             Toast.makeText(getApplicationContext(), "There are no notes. ", 20).show();
-            Intent activity = new Intent(getApplicationContext(), GrammarSection.class);
+            Intent activity = new Intent(getApplicationContext(), NoteSection.class);
             startActivity(activity);
         }
 
@@ -103,7 +103,7 @@ public class GrammarList extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activity = new Intent(getApplicationContext(), GrammarSection.class);
+                Intent activity = new Intent(getApplicationContext(), NoteSection.class);
                 startActivity(activity);
             }
         });

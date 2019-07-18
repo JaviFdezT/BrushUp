@@ -1,35 +1,12 @@
 package com.jft.brushup;
 
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.res.AssetManager;
-import android.net.Uri;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent activity = new Intent(getApplicationContext(), GrammarSection.class);
+                    Intent activity = new Intent(getApplicationContext(), NoteSection.class);
                     startActivity(activity);
             }
         });

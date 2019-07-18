@@ -28,9 +28,9 @@
     <string name="button_delnote">Delete Note</string>
     <string name="button_exit">Exit</string>
     <string name="button_credits">About</string>
-    <string name="button_grammar">Grammar</string>
+    <string name="button_notes">Notes</string>
     <string name="button_import">Load Data</string>
-    <string name="button_seegrammar">See Notes</string>
+    <string name="button_seenotes">See Notes</string>
     <string name="button_addgrammar">Add New Note</string>
     <string name="button_insertnote">Insert Note</string>
     <string name="button_updateword">Update Word</string>
@@ -42,6 +42,7 @@
     <string name="author">DEVELOPED BY</string>
     <string name="contact">CONTACT</string>
     <string name="grammar">Grammar</string>
+    <string name="pronunciation">Pronunciation</string>
     <string name="help">HELP</string>
     <string name="authormail">javierfdeztroncoso@gmail.com</string>
     <string name="authorname">Javier F. Troncoso</string>
