@@ -11,6 +11,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -21,6 +24,8 @@ import java.util.Map;
 
 public class DdBb extends SQLiteOpenHelper {
 
+    private Context mycontext;
+    private android.content.res.Resources res;
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
@@ -28,6 +33,7 @@ public class DdBb extends SQLiteOpenHelper {
 
     public DdBb(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.mycontext = context;
     }
 
     @Override
@@ -476,6 +482,20 @@ public class DdBb extends SQLiteOpenHelper {
             this.close();
         } catch (NullPointerException e3) {}
         return finalPhoneme;
+    }
+
+    public void loadData(){
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            InputStream inputStream = mycontext.getResources().openRawResource(R.raw.ddbb);
+            BufferedReader reader = new BufferedReader( new InputStreamReader(inputStream));
+            String mLine;
+            while ((mLine = reader.readLine()) != null)
+                db.execSQL(mLine);
+            this.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

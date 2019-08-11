@@ -174,18 +174,10 @@ public class ResetDatabase extends AppCompatActivity {
                         dialog.dismiss();
                         DdBb myddbb = new DdBb(getApplicationContext());
                         try {
-                            BufferedReader reader = new BufferedReader( new InputStreamReader(getAssets().open("ddbb.sql")));
-                            String mLine = reader.readLine();
-                            Boolean bool1=myddbb.run(mLine);
-                            mLine = reader.readLine();
-                            Boolean bool2=myddbb.run(mLine);
-                            if (bool1 && bool2) {
-                                Toast.makeText(getApplicationContext(), "Done!", 20).show();
-                                startActivity(activity);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "There has been an error processing your request. Please, check your code. ", 20).show();
-                            }
+                            myddbb.loadData();
+                            startActivity(activity);
                         } catch (Exception e) {
+                            e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "There has been an error processing your request. Please, try later on. ", 20).show();
                         }
                     }
