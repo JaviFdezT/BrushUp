@@ -61,8 +61,8 @@ public class EditNote extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
 
-                        String newTitle = editText1.getText().toString();
-                        String newDetails = editText2.getText().toString();
+                        String newTitle = editText1.getText().toString().replace("'","`").replace("\"","`");
+                        String newDetails = editText2.getText().toString().replace("'","`").replace("\"","`");
 
                         try {
                             DdBb myddbb = new DdBb(getApplicationContext());

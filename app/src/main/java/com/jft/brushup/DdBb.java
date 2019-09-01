@@ -266,10 +266,10 @@ public class DdBb extends SQLiteOpenHelper {
 
     public boolean insertWord(Word newWord) {
         Boolean bool=true;
-        String word=newWord.getWord().toLowerCase().trim();
-        String meaning=newWord.getMeaning().trim();
-        String example=newWord.getExample().trim();
-        String syntaxis=newWord.getSyntaxis().trim();
+        String word=newWord.getWord().toLowerCase().replace("'","`").replace("\"","`").trim();
+        String meaning=newWord.getMeaning().replace("'","`").replace("\"","`").trim();
+        String example=newWord.getExample().replace("'","`").replace("\"","`").trim();
+        String syntaxis=newWord.getSyntaxis().replace("'","`").replace("\"","`").trim();
         Integer category=newWord.getCategory();
         SQLiteDatabase db = this.getWritableDatabase();
         String UPDATE_TABLE = "INSERT INTO WORDS (word, example, meaning, syntaxis,category) VALUES ('"+word+"','"+example+"','"+meaning+"','"+syntaxis+"',"+category+")";
@@ -284,8 +284,8 @@ public class DdBb extends SQLiteOpenHelper {
 
     public boolean insertNote(Note newNote) {
         Boolean bool=true;
-        String title=newNote.getTitle().toLowerCase().trim();
-        String note=newNote.getDetails().trim();
+        String title=newNote.getTitle().toLowerCase().replace("'","`").replace("\"","`").trim();
+        String note=newNote.getDetails().replace("'","`").replace("\"","`").trim();
         SQLiteDatabase db = this.getWritableDatabase();
         String UPDATE_TABLE = "INSERT INTO NOTES (title, note) VALUES ('"+title+"','"+note+"')";
         try {

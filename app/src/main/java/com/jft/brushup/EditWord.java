@@ -82,9 +82,9 @@ public class EditWord extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
 
-                        String newWord = textView1.getText().toString();
-                        String newMean = textView2.getText().toString();
-                        String newExample = textView3.getText().toString();
+                        String newWord = textView1.getText().toString().replace("'","`").replace("\"","`");
+                        String newMean = textView2.getText().toString().replace("'","`").replace("\"","`");
+                        String newExample = textView3.getText().toString().replace("'","`").replace("\"","`");
                         if (wordIsV.isChecked())
                         {
                             newSyntaxis="v";
