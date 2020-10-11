@@ -58,6 +58,7 @@ public class InsertWord extends AppCompatActivity {
                             if (bool) {
                                 Toast.makeText(getApplicationContext(), "New word has been added to the dictionary. ", 20).show();
                                 startActivity(activity);
+                                finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "There has been an error processing this information. Please, avoid special symbols", 20).show();
                             }
@@ -72,6 +73,7 @@ public class InsertWord extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(activity);
+                finish();
             }
         });
     }

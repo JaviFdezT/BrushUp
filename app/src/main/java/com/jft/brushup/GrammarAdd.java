@@ -42,6 +42,7 @@ public class GrammarAdd extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "New note has been added. ", 20).show();
                                 Intent activity = new Intent(getApplicationContext(), GrammarList.class);
                                 startActivity(activity);
+                                finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "There has been an error processing this information. Please, avoid special symbols", 20).show();
                             }
@@ -57,6 +58,7 @@ public class GrammarAdd extends AppCompatActivity {
             public void onClick(View v) {
                 Intent activity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(activity);
+                finish();
             }
         });
 

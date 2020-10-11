@@ -71,6 +71,7 @@ public class EditNote extends AppCompatActivity {
                                 activity.putExtra("showNote",newTitle);
                                 Toast.makeText(getApplicationContext(), "Updated!", 20).show();
                                 startActivity(activity);
+                                finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "There has been an error processing this information. Please, avoid special symbols", 20).show();
                             }
@@ -100,6 +101,7 @@ public class EditNote extends AppCompatActivity {
             public void onClick(View v) {
                 activity.putExtra("showNote",showNote);
                 startActivity(activity);
+                finish();
             }
         });
 

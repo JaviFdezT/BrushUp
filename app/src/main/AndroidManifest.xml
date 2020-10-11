@@ -29,6 +29,9 @@
             android:name=".ShowDict"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ShowWord" />
+        <activity
+            android:name=".ShowDictbySpanish"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ShowCredits" />
         <activity android:name=".NoteSection" />
         <activity android:name=".GrammarList" />

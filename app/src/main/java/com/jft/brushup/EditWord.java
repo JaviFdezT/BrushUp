@@ -102,6 +102,7 @@ public class EditWord extends AppCompatActivity {
                             activity.putExtra("showMeaning",newMean);
                             Toast.makeText(getApplicationContext(), "Updated. ", 20).show();
                             startActivity(activity);
+                            finish();
                         } catch (Exception e){
                             Toast.makeText(getApplicationContext(), "There has been an error processing your request. Please, try later on. ", 20).show();
                             Intent activity = new Intent(getApplicationContext(), ShowDict.class);
@@ -129,6 +130,7 @@ public class EditWord extends AppCompatActivity {
                 activity.putExtra("showWord",showWord);
                 activity.putExtra("showMeaning",showMeaning);
                 startActivity(activity);
+                finish();
             }
         });
     }

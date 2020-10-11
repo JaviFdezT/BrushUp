@@ -105,6 +105,14 @@ public class ShowDict extends AppCompatActivity {
         });
 
 
+        Button button0 = findViewById(R.id.button_bySpanish);
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activity = new Intent(getApplicationContext(), ShowDictbySpanish.class);
+                startActivity(activity);
+            }
+        });
         Button button1 = findViewById(R.id.button_seeAllWords);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

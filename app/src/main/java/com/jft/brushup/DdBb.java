@@ -54,7 +54,29 @@ public class DdBb extends SQLiteOpenHelper {
 
     public List<Word> getAllWords() {
         List<Word> words = new LinkedList<Word>();
-        String query = "SELECT  * FROM WORDS ORDER BY WORD";
+        String query = "SELECT  * FROM WORDS ORDER BY LOWER(WORD)";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Word word = null;
+        if (cursor.moveToFirst()) {
+            do {
+                word = new Word();
+                word.setWord(cursor.getString(0));
+                word.setExample(cursor.getString(1));
+                word.setMeaning(cursor.getString(2));
+                word.setSyntaxis(cursor.getString(3));
+                word.setCategory(Integer.parseInt(cursor.getString(4)));
+                words.add(word);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        this.close();
+        return words;
+    }
+
+    public List<Word> getAllWordsByMeaning() {
+        List<Word> words = new LinkedList<Word>();
+        String query = "SELECT  * FROM WORDS ORDER BY LOWER(MEANING)";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Word word = null;
@@ -76,7 +98,7 @@ public class DdBb extends SQLiteOpenHelper {
 
     public List<Word> getAllWordsByLevel() {
         List<Word> words = new LinkedList<Word>();
-        String query = "SELECT  * FROM WORDS ORDER BY CATEGORY DESC, WORD ASC";
+        String query = "SELECT  * FROM WORDS ORDER BY CATEGORY DESC, LOWER(WORD) ASC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Word word = null;
@@ -121,7 +143,7 @@ public class DdBb extends SQLiteOpenHelper {
     public List<String> getWords() {
         List<String> words = new LinkedList<String>();
         try{
-            String query = "SELECT  * FROM WORDS ORDER BY WORD";
+            String query = "SELECT  * FROM WORDS ORDER BY LOWER(WORD)";
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             if (cursor.moveToFirst()) {

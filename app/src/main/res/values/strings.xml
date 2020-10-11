@@ -12,7 +12,7 @@
     <string name="other">Other</string>
     <string name="all">Any</string>
     <string name="options">Options</string>
-    <string name="level">Number of words:</string>
+    <string name="level">Words per level (%):</string>
     <string name="example">Example:</string>
     <string name="button_mainmenu">Go to Main Menu</string>
     <string name="button_goback">Go back</string>
